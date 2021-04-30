@@ -1,0 +1,15 @@
+* {
+  text-decoration: none;
+}
+
+body {
+  background-image: url("images/bgsakamoto.jpg");
+  background-size: cover;
+}
+
+.main-title {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+}
