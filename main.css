@@ -2,9 +2,31 @@
   text-decoration: none;
 }
 
+/* Comment block
+Colors
+  #e7746f - red light
+  #9a464e - red dark
+  #616161 - gray
+  #464646 - gray dark
+
+*/
+
 body {
   background-image: url("images/bgsakamoto.jpg");
   background-size: cover;
+}
+
+.test-box {
+  height: 250px;
+  width: 100px;
+  background-color: #464646;
+  box-shadow: inset 0 0 3px #9a464e;
+  border-color: #e7746f;
+  border-radius: 25px;
+}
+
+.test-box > * {
+  color: #616161;
 }
 
 .main-title {
