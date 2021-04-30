@@ -17,12 +17,16 @@ body {
 }
 
 .test-box {
+  display: flex;
+  align-self: center;
+  justify-content: center;
   height: 250px;
   width: 100px;
   background-color: #464646;
   box-shadow: inset 0 0 3px #9a464e;
   border-color: #e7746f;
   border-radius: 25px;
+  padding: 10px;
 }
 
 .test-box > * {
