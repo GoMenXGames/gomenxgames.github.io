@@ -1,0 +1,86 @@
+:root {
+	--light-color: #F21DA8;
+	--shade-color: #310859;
+	--main-color: #141640;
+	--shadow-color: #5C64F2;
+	--bglight-color: #88F2F2;	
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	color: var(--bglight-color);
+	font-family: 'Brush Script MT', cursive;
+}
+
+body {
+	background-color: var(--main-color);
+}
+
+.blockdesign, li p, .subgroup ul li {
+	display: inline-block;
+	border: 1px solid black;
+	box-shadow: 2px 2px 4px var(--light-color), -2px -2px 4px var(--shadow-color);
+	background-color: var(--main-color);
+}
+
+.dropmenu h3 {
+	display: flex;
+	width: fit-content;
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid black;
+	box-shadow: 2px 2px 4px var(--light-color), -2px -2px 4px var(--shadow-color);
+	background-color: var(--main-color);
+}
+
+
+.navdropmenu {
+	display: none;
+	position: relative;
+	top: -10px;
+}
+
+.dropmenu h3:hover ~ .navdropmenu, .navdropmenu:hover {
+	display: inline-block;
+}
+
+.navdropmenu ul {
+	display: flex;
+	flex-direction: column;
+	margin-left: 10px;
+	list-style-type: none;
+}
+
+.navdropmenu ul li {
+	padding: 3px;
+}
+
+.navdropmenu ul li p ~ p {
+	margin-top: 1px;
+}
+
+.subgroup {
+	display: none;
+	position: absolute;
+}
+
+.navdropmenu ul #social p:hover ~ .subgroup, .subgroup:hover {
+	display: inline-block;
+}
+
+.subgroup ul {
+	display: flex;
+	flex-direction: column;
+	margin-left: 5px;
+	list-style-type: none;
+}
+
+.subgroup ul li {
+	padding: 2px;
+}
+
+.subgroup ul li ~ li {
+	margin-top: 1px;
+}
