@@ -53,6 +53,10 @@ body {
 	list-style-type: none;
 }
 
+.navdropmenu ul li {
+	display: grid;
+}
+
 .navdropmenu ul li p {
 	display: grid;
 	padding: 3px;
