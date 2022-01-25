@@ -47,23 +47,25 @@ body {
 }
 
 .navdropmenu ul {
-	display: flex;
+	display: grid;
 	flex-direction: column;
 	margin-left: 10px;
 	list-style-type: none;
 }
 
-.navdropmenu ul li {
+.navdropmenu ul li p {
+	display: grid;
 	padding: 3px;
 }
 
 .navdropmenu ul li p ~ p {
-	margin-top: 1px;
+	/* margin-top: 1px; */
 }
 
 .subgroup {
 	display: none;
 	position: absolute;
+	left: 100%;
 }
 
 .navdropmenu ul #social p:hover ~ .subgroup, .subgroup:hover {
@@ -82,5 +84,5 @@ body {
 }
 
 .subgroup ul li ~ li {
-	margin-top: 1px;
+	/* margin-top: 1px; */
 }
