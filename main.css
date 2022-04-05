@@ -1,93 +1,288 @@
 :root {
-	--light-color: #F21DA8;
-	--shade-color: #310859;
-	--main-color: #141640;
-	--shadow-color: #5C64F2;
-	--bglight-color: #88F2F2;	
+    --about-border: DarkSlateBlue;
+    --about-background: SlateBlue;
+
+    --social-border: MidnightBlue;
+    --social-background: RoyalBlue;
+
+    --gaming_goals-border: SeaGreen;
+    --gaming_goals-background: MediumSeaGreen;
+
+    --hobby-border: Chocolate;
+    --hobby-background: Sandybrown;
+
+    --red-border: Maroon;
+    --red-background: Brown;
 }
+
+/* Technical styles */
+
+.hidden {
+    display: none !important;
+}
+
+.spoiler {
+    background: #000;
+}
+
+.spoiler:hover {
+    color: #FFF;
+}
+
+debug {
+    background: #FFF;
+    padding: 10px;
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+/* Main styles */
 
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	color: var(--bglight-color);
-	font-family: 'Brush Script MT', cursive;
-	text-shadow: -1px -1px 0px var(--shade-color);
+    font-family: 'Kelly Slab', cursive;
+    user-select: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body {
-	background-color: var(--main-color);
-}
-
-.blockdesign, li p, .subgroup ul li {
-	display: inline-block;
-	border: 1px solid black;
-	box-shadow: 2px 2px 4px var(--light-color), -2px -2px 4px var(--shadow-color);
-	background-color: var(--main-color);
-}
-
-.dropmenu h3 {
-	display: flex;
-	width: fit-content;
-	margin: 10px;
-	padding: 10px;
-	border: 1px solid black;
-	box-shadow: 2px 2px 4px var(--light-color), -2px -2px 4px var(--shadow-color);
-	background-color: var(--main-color);
+div[class="body"] {
+    padding: 10px;
 }
 
 
-.navdropmenu {
-	display: none;
-	position: relative;
-	top: -10px;
+main ul {
+    padding-inline-start: 40px;
 }
 
-.dropmenu h3:hover ~ .navdropmenu, .navdropmenu:hover {
-	display: inline-block;
+p {
+    user-select: text;
 }
 
-.navdropmenu ul {
-	display: grid;
-	flex-direction: column;
-	margin-left: 10px;
-	list-style-type: none;
+header {
+    display: flex;
+
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.navdropmenu ul li {
-	display: grid;
+.tablist > ul {
+    display: flex;
+    padding: 0 10px;
+
+    align-items: flex-end;
 }
 
-.navdropmenu ul li p {
-	display: grid;
-	padding: 3px;
+.tablist ul svg {
+
 }
 
-.navdropmenu ul li p ~ p {
-	/* margin-top: 1px; */
+.tablist > ul > li {
+    z-index: 1;
+    position: relative;
+    bottom: -2px;
+
+    display: flex;
+    padding: 10px;
+
+    background-color: #fff;
+    border: 2px solid black;
+    border-radius: 15px 15px 0 0;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.subgroup {
-	display: none;
-	position: absolute;
-	left: 100%;
+.submenu {
+    z-index: 5;
+    top: calc(100%);
+    /* left: -2px; */
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+
+    list-style: none;
 }
 
-.navdropmenu ul #social p:hover ~ .subgroup, .subgroup:hover {
-	display: inline-block;
+#hobby[class="selected"] > .submenu {
+    top: calc(100% - 1px);
+} 
+
+.submenu > li {
+    height: fit-content;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 2px 3px;
+    background-color: var(--hobby-background);
+    border: 2px solid var(--hobby-border);
 }
 
-.subgroup ul {
-	display: flex;
-	flex-direction: column;
-	margin-left: 5px;
-	list-style-type: none;
+.submenu > li:hover {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    font-size: 1.6rem;
 }
 
-.subgroup ul li {
-	padding: 2px;
+.submenu > li:first-child {
+    border-bottom-left-radius: 8px;
+
+    /* border-left: 2px solid var(--hobby-border);
+    border-bottom: 2px solid var(--hobby-border); */
 }
 
-.subgroup ul li ~ li {
-	/* margin-top: 1px; */
+.submenu > li:last-child {
+    border-bottom-right-radius: 8px;
+
+    /* border-right: 2px solid var(--hobby-border);
+    border-bottom: 2px solid var(--hobby-border); */
+}
+
+
+.flex-column {
+    display: flex;
+    flex-direction: row;
+}
+
+.right-img {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-img > div {
+    display: flex;
+    align-items: baseline;
+}
+
+section {
+    z-index: 2;
+    position: relative;
+
+    display: flex;
+    min-height: 86vh; 
+    padding: 10px;
+
+    border: 2px solid black;
+    border-radius: 5px;
+
+    flex-direction: column;
+}
+
+section > img {
+    border-radius: 20px;
+}
+
+sub {
+    margin-top: 15px;
+}
+
+.childDesign {
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+/* Decoration colors tabs */
+.tablist > ul > #about, 
+ main > #about {
+    background-color: var(--about-background);
+    border-color: var(--about-border);
+}
+
+.tablist > ul > #social, 
+ main > #social,
+ main > #social .childDesign {
+    background-color: var(--social-background);
+    border-color: var(--social-border);
+}
+
+.tablist > ul > #gaming-goals, 
+ main > #gaming-goals {
+    background-color: var(--gaming_goals-background);
+    border-color: var(--gaming_goals-border);
+}
+
+.tablist > ul > #hobby, 
+ main > #hobby {
+    background-color: var(--hobby-background);
+    border-color: var(--hobby-border);
+}
+
+.tablist > ul > li ~ li {
+    margin-left: 3px;
+}
+
+.tablist > ul > .selected{
+    z-index: 3;
+    border-bottom: none;
+}
+
+.tablist ul li b {
+    /* display: none; */
+}
+
+.tablist ul .selected b {
+    display: inline;
+}
+
+section[id="social"] .links {
+    margin: 0;
+    padding: 0;
+
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, 200px);
+    
+    justify-content: center;
+}
+
+section[id="social"] .links > .link {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    background: linear-gradient(-180deg, #FFF 69%, var(--social-background) 70%);
+    box-shadow: 0 0 2px black;
+}
+
+section[id="social"] .links > .link > .image {
+    display: flex;
+    min-height: 186px;
+
+    align-items: center;
+    justify-content: center;
+}
+
+section[id="social"] .links > .link > .info {
+    margin-top: 21px;
+    padding: 15px;
+
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+section[id="social"] .links > .link > div > h1 {
+    color: white;
+}
+
+section[id="social"] .links > .link[id="inst"] {
+    filter: blur(2px);
+    text-decoration: line-through;
+}
+
+section[id="social"] .links > .link[id="fb"] {
+    filter: blur(2px);
+    text-decoration: line-through;
+}
+
+section[id="social"] .links > .link > div > h5 {
+    color: lightgray; 
 }

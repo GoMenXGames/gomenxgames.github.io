@@ -1,42 +1,134 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-86111749-2">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Font connect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
 
-  gtag('config', 'UA-86111749-2');
-</script>
-    <link rel="stylesheet" href="main.css"/>
-    <title>GoMenXGames's Web-Site</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>GoMenXGames</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+    <script src="scripts/frameworks/vue.js"></script>
 </head>
 <body>
-    <div class="dropmenu">
-        <h3>GoMenXGames</h3>
-        <div class="navdropmenu">
+    <div class="body" id="app">
+        <header> 
+        <nav class="tablist">
             <ul>
-                <li>
-                    <p>Главная</p>
-                </li>
-                <li id="social">
-                    <p>Соц. Сети</p>
-                    <div class="subgroup">
-                        <ul>
-                            <li>VK</li>
-                            <li>YT</li>
-                            <li>TW</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <p>Хобби</p>
-                </li>
-                <li>
-                    <p>Другое</p>
+                <li v-for="(tab, index) in Sections" :title="tab.title" :class="{selected: tab.selected == true}" :id="tab.id">
+                    <img :src="tab.image" :alt="tab.id +'.png'">
+                    <b>{{tab.name}}</b>
+                    <ul class="submenu" v-if="tab.sub">
+                        <li v-for="(subTab, index) in tab.subs" :id="subTab.id">{{subTab.name}}</li>
+                    </ul>
                 </li>
             </ul>
-        </div>
+        </nav>
+        <a target="_blank" href="https://www.donationalerts.com/c/GoMenXGames" class="donation">
+            
+            Donation
+    
+        </a>
+    </header>
+    <main>
+        <section class="" id="about">
+            <div class="flex-column">
+                <img src="media/img/myphoto.jpg" alt="myphoto.jpg">
+                <div class="right-img">
+                    <div>
+                        <h1>Илья</h1><pre> <b :title="Sections[0].content[0].title">(~{{Sections[0].content[0].age}} Лет)</b> </pre><b>[GoMenXGames]</b> 
+                    </div>
+                    <div>
+                        <h3>Деятельность:</h3>
+                        <p>
+                            Студент, Программист, Игрок.
+                        </p>
+                    </div> 
+                    <object data="/object.html" type=""></object>
+                </div>
+            </div>
+            
+        </section>
+        <section class="hidden" id="social">
+            <ul class="links">
+                <li v-for="(link, index) in Sections[1].content" :id="link.id" v-on:click="goToLink(link.link)" class="link childDesign"> 
+                    <div class="image">
+                        <img width="128px" :src="link.img" :alt="link.img">
+                    </div>
+                    <div class="info">
+                        <h1>{{link.title}}</h1>
+                        <h5>{{link.description}}</h5>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="hidden" id="hobby">
+            <sub class="hidden" id="video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/bthB-w2YO8A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </sub>
+            <sub class="hidden" id="streaming">
+                <iframe src="https://player.twitch.tv/?channel=gomenxgames&parent=gomenxgames.github.io" frameborder="1" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+                <iframe
+                    id="chat_embed"
+                    src="https://www.twitch.tv/embed/gomenxgames/chat?parent=gomenxgames.github.io"
+                    height="500"
+                    width="350">
+                </iframe>
+            </sub>
+            <sub class="" id="gaming">
+                <h1>Игры</h1>
+                <ul> 
+                    <li>
+                        <h3></h3><a href=""></a>
+                    </li>
+                    
+                </ul>
+            </sub>
+            <sub class="hidden" id="art">
+                <h1>Арты, Модели, и др.</h1>
+                <ul> 
+                    <li>
+                        <h3></h3><a href=""></a>
+                    </li>
+                    
+                </ul>
+            </sub>
+            <sub class="hidden" id="watching">
+                <h1>Досуг</h1>
+                <ul>   
+                    <li>
+                        <h3>shikimori.one</h3><a target="_blank" href="https://shikimori.one/GoMenXGames">https://shikimori.one/GoMenXGames</a>
+                    </li>
+                    <li>
+                        <h3>MangaLib</h3><a target="_blank" href="https://mangalib.me/user/406290">https://mangalib.me/user/406290</a>
+                    </li>
+                    <li>
+                        <h3></h3><a href=""></a>
+                    </li>
+                    
+                </ul>
+    
+            </sub>
+            <sub class="hidden" id="programming">
+                <h1>Программирование</h1>
+                <ul> 
+                    <li>
+                        <h3>GitHub</h3><a target="_blank" href="https://github.com/GoMenXGames">https://github.com/GoMenXGames</a>
+                    </li>
+                    <li>
+                        <h3>GoGamesXDevStudio+</h3><a target="_blank" href="https://vk.com/gogamesxdevstudioplus">https://vk.com/gogamesxdevstudioplus</a>
+                    </li>
+                    
+                </ul>
+            </sub>
+        </section>
+    </main>
     </div>
 </body>
+</html>
+<script src='index.js'></script>
+<script src="scripts/tabbing.js"></script>
