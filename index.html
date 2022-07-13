@@ -1,135 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <!-- Font connect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
-
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>GoMenXGames</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta name="p:domain_verify" content="28245801652f2f096040388d25730869"/>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    
+    <title>GoMenXGames Mini-Site</title>
 </head>
 <body>
-    <div class="body" id="app">
-        <header> 
-        <nav class="tablist">
-            <ul>
-                <li v-for="(tab, index) in Sections" :title="tab.title" :class="{selected: tab.selected == true}" :id="tab.id">
-                    <img :src="tab.image" :alt="tab.id +'.png'">
-                    <b>{{tab.name}}</b>
-                    <ul class="submenu" v-if="tab.sub">
-                        <li v-for="(subTab, index) in tab.subs" :id="subTab.id">{{subTab.name}}</li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <a target="_blank" href="https://www.donationalerts.com/c/GoMenXGames" class="donation">
-            
-            Donation
-    
-        </a>
-    </header>
-    <main>
-        <section class="" id="about">
-            <div class="flex-column">
-                <img src="media/img/myphoto.jpg" alt="myphoto.jpg">
-                <div class="right-img">
-                    <div>
-                        <h1>Илья</h1><pre> <b :title="Sections[0].content[0].title">(~{{Sections[0].content[0].age}} Лет)</b> </pre><b>[GoMenXGames]</b> 
-                    </div>
-                    <div>
-                        <h3>Деятельность:</h3>
-                        <p>
-                            Студент, Программист, Игрок.
-                        </p>
-                    </div> 
-                    <object data="/object.html" type=""></object>
+    <div class="main-wrapper" id="app">
+        <span>
+            <h1 v-bind:title="message">{{title}}</h1>
+            <h5>{{sub}}</h5>
+        </span>
+        <div class="block">
+            <div class="tabs">
+                <div v-for="(tab, index) in tabs" :key="index" 
+                :style="'border-color: var(--'+tab.color+'-border);' 
+                + 'background-color: var(--'+tab.color+'-background)'" 
+                :class="'tab' + ' ' + tab.status" :id="tab.id" 
+                v-on:click="selectTab(index)">
+                    {{tab.title}}
                 </div>
             </div>
-            
-        </section>
-        <section class="hidden" id="social">
-            <ul class="links">
-                <li v-for="(link, index) in Sections[1].content" :id="link.id" v-on:click="goToLink(link.link)" class="link childDesign"> 
-                    <div class="image">
-                        <img width="128px" :src="link.img" :alt="link.img">
-                    </div>
-                    <div class="info">
-                        <h1>{{link.title}}</h1>
-                        <h5>{{link.description}}</h5>
-                    </div>
-                </li>
-            </ul>
-        </section>
-        <section class="hidden" id="hobby">
-            <sub class="hidden" id="video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/bthB-w2YO8A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </sub>
-            <sub class="hidden" id="streaming">
-                <iframe src="https://player.twitch.tv/?channel=gomenxgames&parent=gomenxgames.github.io" frameborder="1" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
-                <iframe
-                    id="chat_embed"
-                    src="https://www.twitch.tv/embed/gomenxgames/chat?parent=gomenxgames.github.io"
-                    height="500"
-                    width="350">
-                </iframe>
-            </sub>
-            <sub class="" id="gaming">
-                <h1>Игры</h1>
-                <ul> 
-                    <li>
-                        <h3></h3><a href=""></a>
-                    </li>
+            <div class="pages">
+                <div :class="'page' + ' ' + tabs[0].status" id="main">
+                    <img width="100" src="https://sun3-9.userapi.com/s/v1/ig2/dmIjVoG0Acm0NlxJacgDI9zXbGbQHsZreVd6XSXwiqDaXMuXrugPrHrdgYhi5WmH6OH9zHKDDWiwyZeWdVW-oLyK.jpg?size=200x200&quality=96&crop=2,0,1197,1197&ava=1" alt="">
+                    <h3>GoMenXGames</h3><h4>(Илья)</h4>
+                    <h5>Деятельность:</h5>
+                    <a class="hobby" 
+                    v-for="(hobby,index) in hobbys" 
+                    :href="hobby.href"> 
+                    <img :src="hobby.imghref" height="16" alt="">
+                    {{hobby.title}}
+                    <!-- <span v-if="index < hobbys.length-1">,</span>
+                    <span v-if="index == hobbys.length-1">.</span> -->
+                    </a>
+                    <br>
+                    <a class="button" href="https://gomenxgames.github.io">Перейти на основной сайт</a>
+                </div>
+                <div :class="'page' + ' ' + tabs[1].status" id="social">
+                    <a class="social" :href="social.href" v-for="social in socials">
+                        <img height="32" :src="'img/social/' + social.id + '.ico'" :alt="social.title">
+                        <div>
+                            <h3>{{social.title}}</h3>
+                            <h5>{{social.description}}</h5>
+                        </div>
+                    </a>
+                </div>
+                <div :class="'page' + ' ' + tabs[2].status" id="other">
+                    <a class="button" href="https://www.donationalerts.com/r/gomenxgames">Поддержать <br/><img height="16" style="position: relative; top: 3px;" src="https://www.donationalerts.com/favicon.ico" alt="">DonationAlerts</a>
                     
-                </ul>
-            </sub>
-            <sub class="hidden" id="art">
-                <h1>Арты, Модели, и др.</h1>
-                <ul> 
-                    <li>
-                        <h3></h3><a href=""></a>
-                    </li>
-                    
-                </ul>
-            </sub>
-            <sub class="hidden" id="watching">
-                <h1>Досуг</h1>
-                <ul>   
-                    <li>
-                        <h3>shikimori.one</h3><a target="_blank" href="https://shikimori.one/GoMenXGames">https://shikimori.one/GoMenXGames</a>
-                    </li>
-                    <li>
-                        <h3>MangaLib</h3><a target="_blank" href="https://mangalib.me/user/406290">https://mangalib.me/user/406290</a>
-                    </li>
-                    <li>
-                        <h3></h3><a href=""></a>
-                    </li>
-                    
-                </ul>
-    
-            </sub>
-            <sub class="hidden" id="programming">
-                <h1>Программирование</h1>
-                <ul> 
-                    <li>
-                        <h3>GitHub</h3><a target="_blank" href="https://github.com/GoMenXGames">https://github.com/GoMenXGames</a>
-                    </li>
-                    <li>
-                        <h3>GoGamesXDevStudio+</h3><a target="_blank" href="https://vk.com/gogamesxdevstudioplus">https://vk.com/gogamesxdevstudioplus</a>
-                    </li>
-                    
-                </ul>
-            </sub>
-        </section>
-    </main>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
-<script src='index.js'></script>
-<script src="scripts/tabbing.js"></script>
+<script src="script.js"></script>
