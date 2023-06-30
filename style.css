@@ -102,6 +102,7 @@ body {
     flex-direction: column;
     border-color: var(--about-border);
     background-color: var(--about-background);
+    justify-content: space-around;
 }
 .pages > .page:nth-child(2){
     display: grid;
